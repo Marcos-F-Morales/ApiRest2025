@@ -25,22 +25,18 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 // creamos un objeto db
 const db = {};
 
-// la variable db.Sequelize = módulo importado Sequelize que está declarado previamente
 db.Sequelize = Sequelize;
-
-// se define una variable con la configuración de sequelize
 db.sequelize = sequelize;
 
-// se crea una variable clientes que importa el modelo que está dentro de la carpeta models/cliente.model.js
+// modelos existentes
 db.clientes = require("./cliente.model.js")(sequelize, Sequelize);
 db.empleados = require("./empleado.model.js")(sequelize, Sequelize);
 db.proveedores = require("./proveedor.model.js")(sequelize, Sequelize);
 db.departamentos = require("./departamento.model.js")(sequelize, Sequelize);
 db.productos = require("./producto.model.js")(sequelize, Sequelize);
 
-
-// puedes seguir agregando más modelos e importarlos de la siguiente manera
-// db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+// nuevo modelo de autenticación
+db.usuarios = require("./usuario.model.js")(sequelize, Sequelize);
 
 // se utiliza el export para que el objeto db pueda ser accedido a través de otras clases
 module.exports = db;
